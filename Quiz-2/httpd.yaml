@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: httpd-web
+  name: httpd-web
+spec:
+  selector:
+    matchLabels:
+      app: httpd-web
+  replicas: 2 
+  template:
+    metadata:
+      labels:
+        app: httpd-web
+    spec:
+      containers:
+      - name: httpd
+        image: httpd:alpine
+        ports:
+        - containerPort: 80
